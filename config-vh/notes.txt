@@ -1,0 +1,42 @@
+C:\Windows\System32\drivers\etc
+
+127.0.0.1       localhost
+127.0.0.1       www.class.php
+
+httpd.config
+
+# Virtual hosts
+
+#Include conf/extra/httpd-vhosts.conf
+
+Include conf/extra/httpd-vhosts_php.conf
+
+
+
+C:\wamp\bin\apache\apache2.4.9\conf\extra
+
+<VirtualHost *:8080>
+	ServerAdmin admin@localhost
+    DocumentRoot "C:/wamp/www/"
+    ServerName localhost
+    ServerAlias www.localhost.com
+    ErrorLog "logs/localhost-error.log"
+    CustomLog "logs/localhost-access.log" common
+</VirtualHost>
+
+<VirtualHost *:8080>
+	ServerAdmin admin@class.php
+    DocumentRoot "D:/tutoriales/php/clases/class1/"
+    ServerName class.php
+    ServerAlias www.class.php
+	<Directory "D:/tutoriales/php/clases/class1/">
+		Options Indexes FollowSymLinks		
+		AllowOverride All
+		Require local
+		#Order Allow,Deny
+		#Deny from all
+		#Allow from all		
+	</Directory>
+    ErrorLog "logs/class.php-error.log"
+    CustomLog "logs/class.php-access.log" common
+</VirtualHost>
